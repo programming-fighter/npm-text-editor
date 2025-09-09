@@ -1,2 +1,1 @@
-// src/index.tsx
 export { Editor } from "./editor.js";
