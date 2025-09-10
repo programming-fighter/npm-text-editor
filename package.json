@@ -20,5 +20,8 @@
     "rollup": "^3.29.5",
     "tslib": "^2.8.1",
     "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "lucide-react": "^0.543.0"
   }
 }
