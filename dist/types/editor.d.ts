@@ -1,7 +1,7 @@
-import React from "react";
-interface EditorProps {
+import type React from "react";
+export interface EditorProps {
+    initialContent?: string;
+    onChange?: (content: string) => void;
     placeholder?: string;
-    onChange?: (value: string) => void;
 }
 export declare const Editor: React.FC<EditorProps>;
-export {};
