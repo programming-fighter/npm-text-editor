@@ -5,7 +5,8 @@
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -22,6 +23,7 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "lucide-react": "^0.543.0"
+    "lucide-react": "^0.543.0",
+    "react-text-editor": "file:../react-text-editor/react-text-editor-1.0.0.tgz"
   }
 }
