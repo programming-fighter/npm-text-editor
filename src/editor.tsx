@@ -1,6 +1,6 @@
 // src/Editor.tsx
 import React, { useRef } from "react";
-import { Toolbar } from "./Toolbar";
+import { Toolbar } from "./toolbar.js";
 
 interface EditorProps {
   placeholder?: string;

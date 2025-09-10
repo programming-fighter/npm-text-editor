@@ -1,0 +1,1 @@
+{"version":3,"file":"index.esm.js","sources":["../src/index.tsx"],"sourcesContent":["// src/index.tsx\nexport { Editor } from \"./editor.js\";\n"],"names":[],"mappings":";;AAAA;AACA,IAAqC,WAAA,GAAA,OAAA,CAAA,aAAA,CAAA,CAAA;AAA5B,MAAA,CAAA,cAAA,CAAA,OAAA,EAAA,QAAA,EAAA,EAAA,UAAA,EAAA,IAAA,EAAA,GAAA,EAAA,YAAA,EAAA,OAAA,WAAA,CAAA,MAAM,CAAA,EAAA,EAAA,CAAA"}
