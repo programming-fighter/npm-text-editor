@@ -28,6 +28,7 @@ export const LinkDialog: React.FC<LinkDialogProps> = ({ open, onClose, onInsert 
     setText("")
     onClose()
   }
+  if (!open) return null
 
   return (
     <div  onChange={handleClose}>

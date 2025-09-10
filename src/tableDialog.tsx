@@ -26,7 +26,7 @@ export const TableDialog: React.FC<TableDialogProps> = ({ open, onClose, onInser
     setCols(3)
     onClose()
   }
-
+   if (!open) return null
   return (
     <div  onChange={handleClose}>
       <div className="sm:max-w-md">
