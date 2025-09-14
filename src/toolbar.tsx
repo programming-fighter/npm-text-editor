@@ -1,5 +1,3 @@
-"use client"
-
 import type React from "react"
 import { useState } from "react"
 import { Bold, Italic, Underline, Undo, Redo, LinkIcon, ImageIcon, Table, Code, Quote } from "lucide-react"
@@ -18,10 +16,8 @@ export const Toolbar: React.FC<ToolbarProps> = ({ onCommand }) => {
 
   const handleLinkInsert = (url: string, text?: string) => {
     if (text) {
-      // If text is provided, insert it first then create link
       onCommand("insertHTML", `<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>`)
     } else {
-      // Create link from selected text
       onCommand("createLink", url)
     }
     setShowLinkDialog(false)
@@ -64,61 +60,90 @@ export const Toolbar: React.FC<ToolbarProps> = ({ onCommand }) => {
     onCommand("formatBlock", "blockquote")
   }
 
+  // Divider style
+  const dividerStyle: React.CSSProperties = {
+    width: "1px",
+    height: "24px",
+    backgroundColor: "#d1d5db",
+    margin: "0 4px",
+  }
+
+  // Button style
+  const buttonStyle: React.CSSProperties = {
+    border: "none",
+    background: "transparent",
+    padding: "4px",
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }
+
+  // Toolbar container style
+  const toolbarStyle: React.CSSProperties = {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "4px",
+    borderBottom: "1px solid #da741bff",
+    padding: "4px 8px",
+    backgroundColor: "rgba(83, 239, 36, 0.5)", // muted/50
+  }
+
   return (
     <>
-      <div className="flex flex-wrap gap-1 border-b border-border p-2 bg-muted/50">
+      <div style={toolbarStyle}>
         {/* Basic formatting */}
-        <button  onClick={() => onCommand("bold")} title="Bold (Ctrl+B)">
-          <Bold className="h-4 w-4" />
+        <button style={buttonStyle} onClick={() => onCommand("bold")} title="Bold (Ctrl+B)">
+          <Bold style={{ width: "16px", height: "16px" }} />
         </button>
 
-        <button  onClick={() => onCommand("italic")} title="Italic (Ctrl+I)">
-          <Italic className="h-4 w-4" />
+        <button style={buttonStyle} onClick={() => onCommand("italic")} title="Italic (Ctrl+I)">
+          <Italic style={{ width: "16px", height: "16px" }} />
         </button>
 
-        <button  onClick={() => onCommand("underline")} title="Underline (Ctrl+U)">
-          <Underline className="h-4 w-4" />
+        <button style={buttonStyle} onClick={() => onCommand("underline")} title="Underline (Ctrl+U)">
+          <Underline style={{ width: "16px", height: "16px" }} />
         </button>
 
-        <div className="w-px h-6 bg-border mx-1" />
+        <div style={dividerStyle} />
 
         {/* Undo/Redo */}
-        <button  onClick={() => onCommand("undo")} title="Undo (Ctrl+Z)">
-          <Undo className="h-4 w-4" />
+        <button style={buttonStyle} onClick={() => onCommand("undo")} title="Undo (Ctrl+Z)">
+          <Undo style={{ width: "16px", height: "16px" }} />
         </button>
 
-        <button  onClick={() => onCommand("redo")} title="Redo (Ctrl+Shift+Z)">
-          <Redo className="h-4 w-4" />
+        <button style={buttonStyle} onClick={() => onCommand("redo")} title="Redo (Ctrl+Shift+Z)">
+          <Redo style={{ width: "16px", height: "16px" }} />
         </button>
 
-        <div className="w-px h-6 bg-border mx-1" />
+        <div style={dividerStyle} />
 
         {/* Insert elements */}
-        <button  onClick={() => setShowLinkDialog(true)} title="Insert Link">
-          <LinkIcon className="h-4 w-4" />
+        <button style={buttonStyle} onClick={() => setShowLinkDialog(true)} title="Insert Link">
+          <LinkIcon style={{ width: "16px", height: "16px" }} />
         </button>
 
-        <button  onClick={() => setShowImageDialog(true)} title="Insert Image">
-          <ImageIcon className="h-4 w-4" />
+        <button style={buttonStyle} onClick={() => setShowImageDialog(true)} title="Insert Image">
+          <ImageIcon style={{ width: "16px", height: "16px" }} />
         </button>
 
-        <button  onClick={() => setShowTableDialog(true)} title="Insert Table">
-          <Table className="h-4 w-4" />
+        <button style={buttonStyle} onClick={() => setShowTableDialog(true)} title="Insert Table">
+          <Table style={{ width: "16px", height: "16px" }} />
         </button>
 
-        <div className="w-px h-6 bg-border mx-1" />
+        <div style={dividerStyle} />
 
         {/* Code and quote */}
-        <button  onClick={handleCodeBlock} title="Code Block">
-          <Code className="h-4 w-4" />
+        <button style={buttonStyle} onClick={handleCodeBlock} title="Code Block">
+          <Code style={{ width: "16px", height: "16px" }} />
         </button>
 
-        <button  onClick={handleInlineCode} title="Inline Code">
-          <span className="text-xs font-mono">{`</>`}</span>
+        <button style={buttonStyle} onClick={handleInlineCode} title="Inline Code">
+          <span style={{ fontSize: "10px", fontFamily: "monospace" }}>{`</>`}</span>
         </button>
 
-        <button  onClick={handleBlockquote} title="Blockquote">
-          <Quote className="h-4 w-4" />
+        <button style={buttonStyle} onClick={handleBlockquote} title="Blockquote">
+          <Quote style={{ width: "16px", height: "16px" }} />
         </button>
       </div>
 

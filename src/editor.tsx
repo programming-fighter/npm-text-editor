@@ -55,19 +55,13 @@ export const Editor: React.FC<EditorProps> = ({ initialContent = "", onChange, p
           document.execCommand("redo", false)
           break
         case "createLink":
-          if (value) {
-            document.execCommand("createLink", false, value)
-          }
+          if (value) document.execCommand("createLink", false, value)
           break
         case "insertHTML":
-          if (value) {
-            document.execCommand("insertHTML", false, value)
-          }
+          if (value) document.execCommand("insertHTML", false, value)
           break
         case "formatBlock":
-          if (value) {
-            document.execCommand("formatBlock", false, value)
-          }
+          if (value) document.execCommand("formatBlock", false, value)
           break
         default:
           break
@@ -97,11 +91,8 @@ export const Editor: React.FC<EditorProps> = ({ initialContent = "", onChange, p
             break
           case "z":
             e.preventDefault()
-            if (e.shiftKey) {
-              executeCommand("redo")
-            } else {
-              executeCommand("undo")
-            }
+            if (e.shiftKey) executeCommand("redo")
+            else executeCommand("undo")
             break
           default:
             break
@@ -112,22 +103,61 @@ export const Editor: React.FC<EditorProps> = ({ initialContent = "", onChange, p
   )
 
   return (
-    <div className="border border-border rounded-lg overflow-hidden bg-card">
-      <Toolbar onCommand={executeCommand} />
+    <div
+      style={{
+        border: "1px solid #d1d5db",
+        borderRadius: "0.5rem",
+        overflow: "hidden",
+        backgroundColor: "#ffffff", // cleaner white background
+        display: "flex",
+        flexDirection: "column",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.05)", // subtle shadow
+      }}
+    >
+      {/* Toolbar with bottom border */}
+      <div
+        style={{
+          borderBottom: "1px solid #e5e7eb",
+          padding: "0.5rem 1rem",
+          backgroundColor: "#f9fafb",
+        }}
+      >
+        <Toolbar onCommand={executeCommand} />
+      </div>
+
+      {/* Editable area */}
       <div
         ref={editorRef}
         contentEditable
-        className="min-h-[400px] p-4 focus:outline-none"
         onInput={handleInput}
         onKeyDown={handleKeyDown}
         data-placeholder={placeholder}
+        suppressContentEditableWarning={true}
         style={{
+          minHeight: "400px",
+          padding: "1rem",
+          outline: "none",
           wordWrap: "break-word",
           whiteSpace: "pre-wrap",
+          fontFamily: "sans-serif",
+          fontSize: "1rem",
+          lineHeight: "1.5",
         }}
-        suppressContentEditableWarning={true}
       />
-      <WordCounter content={content} />
+
+      {/* Word counter with top border */}
+      <div
+        style={{
+          borderTop: "1px solid #cd7618ff",
+          padding: "0.5rem 1rem",
+          backgroundColor: "#2367acff",
+          fontSize: "0.875rem",
+          color: "#6b7280",
+          textAlign: "right",
+        }}
+      >
+        <WordCounter content={content} />
+      </div>
     </div>
   )
 }
