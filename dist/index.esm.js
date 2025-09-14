@@ -1723,11 +1723,9 @@ const Toolbar = ({ onCommand }) => {
     const [showTableDialog, setShowTableDialog] = useState(false);
     const handleLinkInsert = (url, text) => {
         if (text) {
-            // If text is provided, insert it first then create link
             onCommand("insertHTML", `<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>`);
         }
         else {
-            // Create link from selected text
             onCommand("createLink", url);
         }
         setShowLinkDialog(false);
@@ -1758,7 +1756,33 @@ const Toolbar = ({ onCommand }) => {
     const handleBlockquote = () => {
         onCommand("formatBlock", "blockquote");
     };
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsxs("div", { className: "flex flex-wrap gap-1 border-b border-border p-2 bg-muted/50", children: [jsxRuntimeExports.jsx("button", { onClick: () => onCommand("bold"), title: "Bold (Ctrl+B)", children: jsxRuntimeExports.jsx(Bold, { className: "h-4 w-4" }) }), jsxRuntimeExports.jsx("button", { onClick: () => onCommand("italic"), title: "Italic (Ctrl+I)", children: jsxRuntimeExports.jsx(Italic, { className: "h-4 w-4" }) }), jsxRuntimeExports.jsx("button", { onClick: () => onCommand("underline"), title: "Underline (Ctrl+U)", children: jsxRuntimeExports.jsx(Underline, { className: "h-4 w-4" }) }), jsxRuntimeExports.jsx("div", { className: "w-px h-6 bg-border mx-1" }), jsxRuntimeExports.jsx("button", { onClick: () => onCommand("undo"), title: "Undo (Ctrl+Z)", children: jsxRuntimeExports.jsx(Undo, { className: "h-4 w-4" }) }), jsxRuntimeExports.jsx("button", { onClick: () => onCommand("redo"), title: "Redo (Ctrl+Shift+Z)", children: jsxRuntimeExports.jsx(Redo, { className: "h-4 w-4" }) }), jsxRuntimeExports.jsx("div", { className: "w-px h-6 bg-border mx-1" }), jsxRuntimeExports.jsx("button", { onClick: () => setShowLinkDialog(true), title: "Insert Link", children: jsxRuntimeExports.jsx(Link, { className: "h-4 w-4" }) }), jsxRuntimeExports.jsx("button", { onClick: () => setShowImageDialog(true), title: "Insert Image", children: jsxRuntimeExports.jsx(Image, { className: "h-4 w-4" }) }), jsxRuntimeExports.jsx("button", { onClick: () => setShowTableDialog(true), title: "Insert Table", children: jsxRuntimeExports.jsx(Table, { className: "h-4 w-4" }) }), jsxRuntimeExports.jsx("div", { className: "w-px h-6 bg-border mx-1" }), jsxRuntimeExports.jsx("button", { onClick: handleCodeBlock, title: "Code Block", children: jsxRuntimeExports.jsx(Code, { className: "h-4 w-4" }) }), jsxRuntimeExports.jsx("button", { onClick: handleInlineCode, title: "Inline Code", children: jsxRuntimeExports.jsx("span", { className: "text-xs font-mono", children: `</>` }) }), jsxRuntimeExports.jsx("button", { onClick: handleBlockquote, title: "Blockquote", children: jsxRuntimeExports.jsx(Quote, { className: "h-4 w-4" }) })] }), jsxRuntimeExports.jsx(LinkDialog, { open: showLinkDialog, onClose: () => setShowLinkDialog(false), onInsert: handleLinkInsert }), jsxRuntimeExports.jsx(ImageDialog, { open: showImageDialog, onClose: () => setShowImageDialog(false), onInsert: handleImageInsert }), jsxRuntimeExports.jsx(TableDialog, { open: showTableDialog, onClose: () => setShowTableDialog(false), onInsert: handleTableInsert })] }));
+    // Divider style
+    const dividerStyle = {
+        width: "1px",
+        height: "24px",
+        backgroundColor: "#d1d5db",
+        margin: "0 4px",
+    };
+    // Button style
+    const buttonStyle = {
+        border: "none",
+        background: "transparent",
+        padding: "4px",
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+    };
+    // Toolbar container style
+    const toolbarStyle = {
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "4px",
+        borderBottom: "1px solid #da741bff",
+        padding: "4px 8px",
+        backgroundColor: "rgba(83, 239, 36, 0.5)", // muted/50
+    };
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsxs("div", { style: toolbarStyle, children: [jsxRuntimeExports.jsx("button", { style: buttonStyle, onClick: () => onCommand("bold"), title: "Bold (Ctrl+B)", children: jsxRuntimeExports.jsx(Bold, { style: { width: "16px", height: "16px" } }) }), jsxRuntimeExports.jsx("button", { style: buttonStyle, onClick: () => onCommand("italic"), title: "Italic (Ctrl+I)", children: jsxRuntimeExports.jsx(Italic, { style: { width: "16px", height: "16px" } }) }), jsxRuntimeExports.jsx("button", { style: buttonStyle, onClick: () => onCommand("underline"), title: "Underline (Ctrl+U)", children: jsxRuntimeExports.jsx(Underline, { style: { width: "16px", height: "16px" } }) }), jsxRuntimeExports.jsx("div", { style: dividerStyle }), jsxRuntimeExports.jsx("button", { style: buttonStyle, onClick: () => onCommand("undo"), title: "Undo (Ctrl+Z)", children: jsxRuntimeExports.jsx(Undo, { style: { width: "16px", height: "16px" } }) }), jsxRuntimeExports.jsx("button", { style: buttonStyle, onClick: () => onCommand("redo"), title: "Redo (Ctrl+Shift+Z)", children: jsxRuntimeExports.jsx(Redo, { style: { width: "16px", height: "16px" } }) }), jsxRuntimeExports.jsx("div", { style: dividerStyle }), jsxRuntimeExports.jsx("button", { style: buttonStyle, onClick: () => setShowLinkDialog(true), title: "Insert Link", children: jsxRuntimeExports.jsx(Link, { style: { width: "16px", height: "16px" } }) }), jsxRuntimeExports.jsx("button", { style: buttonStyle, onClick: () => setShowImageDialog(true), title: "Insert Image", children: jsxRuntimeExports.jsx(Image, { style: { width: "16px", height: "16px" } }) }), jsxRuntimeExports.jsx("button", { style: buttonStyle, onClick: () => setShowTableDialog(true), title: "Insert Table", children: jsxRuntimeExports.jsx(Table, { style: { width: "16px", height: "16px" } }) }), jsxRuntimeExports.jsx("div", { style: dividerStyle }), jsxRuntimeExports.jsx("button", { style: buttonStyle, onClick: handleCodeBlock, title: "Code Block", children: jsxRuntimeExports.jsx(Code, { style: { width: "16px", height: "16px" } }) }), jsxRuntimeExports.jsx("button", { style: buttonStyle, onClick: handleInlineCode, title: "Inline Code", children: jsxRuntimeExports.jsx("span", { style: { fontSize: "10px", fontFamily: "monospace" }, children: `</>` }) }), jsxRuntimeExports.jsx("button", { style: buttonStyle, onClick: handleBlockquote, title: "Blockquote", children: jsxRuntimeExports.jsx(Quote, { style: { width: "16px", height: "16px" } }) })] }), jsxRuntimeExports.jsx(LinkDialog, { open: showLinkDialog, onClose: () => setShowLinkDialog(false), onInsert: handleLinkInsert }), jsxRuntimeExports.jsx(ImageDialog, { open: showImageDialog, onClose: () => setShowImageDialog(false), onInsert: handleImageInsert }), jsxRuntimeExports.jsx(TableDialog, { open: showTableDialog, onClose: () => setShowTableDialog(false), onInsert: handleTableInsert })] }));
 };
 
 const WordCounter = ({ content }) => {
@@ -1769,7 +1793,21 @@ const WordCounter = ({ content }) => {
         .trim();
     const wordCount = textContent ? textContent.split(" ").length : 0;
     const charCount = textContent.length;
-    return (jsxRuntimeExports.jsx("div", { className: "flex justify-between items-center px-4 py-2 bg-muted/30 border-t border-border text-sm text-muted-foreground", children: jsxRuntimeExports.jsxs("div", { className: "flex gap-4", children: [jsxRuntimeExports.jsxs("span", { children: ["Words: ", wordCount] }), jsxRuntimeExports.jsxs("span", { children: ["Characters: ", charCount] })] }) }));
+    const containerStyle = {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "0.5rem 1rem",
+        backgroundColor: "rgba(243, 244, 246, 0.3)", // muted/30
+        borderTop: "1px solid #d1d5db", // border-t border-border
+        fontSize: "0.875rem", // text-sm
+        color: "rgba(247, 248, 249, 1)", // text-muted-foreground
+    };
+    const statsStyle = {
+        display: "flex",
+        gap: "1rem",
+    };
+    return (jsxRuntimeExports.jsx("div", { style: containerStyle, children: jsxRuntimeExports.jsxs("div", { style: statsStyle, children: [jsxRuntimeExports.jsxs("span", { children: ["Words: ", wordCount] }), jsxRuntimeExports.jsxs("span", { children: ["Characters: ", charCount] })] }) }));
 };
 
 const Editor = ({ initialContent = "", onChange, placeholder = "Start typing..." }) => {
@@ -1811,19 +1849,16 @@ const Editor = ({ initialContent = "", onChange, placeholder = "Start typing..."
                 document.execCommand("redo", false);
                 break;
             case "createLink":
-                if (value) {
+                if (value)
                     document.execCommand("createLink", false, value);
-                }
                 break;
             case "insertHTML":
-                if (value) {
+                if (value)
                     document.execCommand("insertHTML", false, value);
-                }
                 break;
             case "formatBlock":
-                if (value) {
+                if (value)
                     document.execCommand("formatBlock", false, value);
-                }
                 break;
         }
         handleInput();
@@ -1846,20 +1881,43 @@ const Editor = ({ initialContent = "", onChange, placeholder = "Start typing..."
                     break;
                 case "z":
                     e.preventDefault();
-                    if (e.shiftKey) {
+                    if (e.shiftKey)
                         executeCommand("redo");
-                    }
-                    else {
+                    else
                         executeCommand("undo");
-                    }
                     break;
             }
         }
     }, [executeCommand]);
-    return (jsxRuntimeExports.jsxs("div", { className: "border border-border rounded-lg overflow-hidden bg-card", children: [jsxRuntimeExports.jsx(Toolbar, { onCommand: executeCommand }), jsxRuntimeExports.jsx("div", { ref: editorRef, contentEditable: true, className: "min-h-[400px] p-4 focus:outline-none", onInput: handleInput, onKeyDown: handleKeyDown, "data-placeholder": placeholder, style: {
+    return (jsxRuntimeExports.jsxs("div", { style: {
+            border: "1px solid #d1d5db",
+            borderRadius: "0.5rem",
+            overflow: "hidden",
+            backgroundColor: "#ffffff", // cleaner white background
+            display: "flex",
+            flexDirection: "column",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.05)", // subtle shadow
+        }, children: [jsxRuntimeExports.jsx("div", { style: {
+                    borderBottom: "1px solid #e5e7eb",
+                    padding: "0.5rem 1rem",
+                    backgroundColor: "#f9fafb",
+                }, children: jsxRuntimeExports.jsx(Toolbar, { onCommand: executeCommand }) }), jsxRuntimeExports.jsx("div", { ref: editorRef, contentEditable: true, onInput: handleInput, onKeyDown: handleKeyDown, "data-placeholder": placeholder, suppressContentEditableWarning: true, style: {
+                    minHeight: "400px",
+                    padding: "1rem",
+                    outline: "none",
                     wordWrap: "break-word",
                     whiteSpace: "pre-wrap",
-                }, suppressContentEditableWarning: true }), jsxRuntimeExports.jsx(WordCounter, { content: content })] }));
+                    fontFamily: "sans-serif",
+                    fontSize: "1rem",
+                    lineHeight: "1.5",
+                } }), jsxRuntimeExports.jsx("div", { style: {
+                    borderTop: "1px solid #cd7618ff",
+                    padding: "0.5rem 1rem",
+                    backgroundColor: "#2367acff",
+                    fontSize: "0.875rem",
+                    color: "#6b7280",
+                    textAlign: "right",
+                }, children: jsxRuntimeExports.jsx(WordCounter, { content: content }) })] }));
 };
 
 export { Editor, ImageDialog, LinkDialog, TableDialog, Toolbar, WordCounter };
